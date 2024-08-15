@@ -67,7 +67,7 @@
         socket.send(JSON.stringify({
             'message': message,
             'room_name': '{{ room_name }}',
-            'sender': '{{ user.username }}',  // Enviando o nome do usuário autenticado
+            'sender': '{{ user.username }}',  // Enviando o nome do usuário autenticado!
         }));
         document.getElementById('msg').value = '';
     });
