@@ -1,0 +1,93 @@
+{% extends 'galeria/base.html' %}
+{% load static %}
+{% block content %}
+<div class="pagina-inicial">
+    <header class="cabecalho">
+        <h1 class="titulo">GiovaniLearning</h1>
+        <div class="cabecalho__busca">
+            <div class="busca__fundo">
+                <input class="busca__input" type="text" placeholder="O que você procura?">
+                <img class="busca__icone" src="{% static 'assets/ícones/1x/search.png' %}" alt="ícone de search">
+            </div>
+        </div>
+        <div class="cabecalho__botoes">
+            {% if user.is_authenticated %}
+            <p class="mensagem-bemvindo">Bem-vindo, {{ user.username }}!</p>
+            <br>
+            <a href="{% url 'logout' %}" class="botao-logout">Logout</a>
+            {% else %}
+            <p class="mensagem-autenticacao">Você não está autenticado!</p>
+            <br>
+            <a href="{% url 'login' %}" class="botao-login">Logar</a>
+            <a href="{% url 'register' %}" class="botao-registro">Registrar</a>
+            {% endif %}
+        </div>
+    </header>
+    <main class="principal">
+        <section class="menu-lateral">
+            <nav class="menu-lateral__navegacao">
+                <a href="#"><img src="{% static 'assets/ícones/1x/casa-icone.png' %}" width="24" height="24"> Home</a>
+                <a href="#"><img src="{% static 'assets/ícones/1x/coracao-icone.png' %}" width="24" height="24"> Matérias favoritas</a>
+                <a href="#"><img src="{% static 'assets/ícones/1x/forum-icone.png' %}" width="24" height="24"> Forum</a>
+                <a href="#"><img src="{% static 'assets/ícones/1x/chapeu-icone.png' %}" width="24" height="24"> Sobre Nós</a>
+            </nav>
+        </section>
+        <section class="conteudo">
+            <section class="banner">
+                <div class="banner__titulo-container">
+                    <h1 class="banner__titulo">Últimas notícias</h1>
+                </div>
+                <a href="https://www.ifsp.edu.br/" target="_blank">
+                    <img class="banner__imagem" src="{% static 'assets/imagens/Greve-foto.jpg' %}" alt="banner Alura Space">
+                </a>
+            </section>            
+            <section class="tags">
+                <p class="tags__titulo">Busque por tags:</p>
+                <ul class="tags__lista">
+                    <li class="tags__tag">Dev-Ops</li>
+                    <li class="tags__tag">Front-End</li>
+                    <li class="tags__tag">Redes</li>
+                </ul>
+            </section>
+            <section class="cursos">
+              <!--  <h2 class="cards__titulo">Cursos Disponíveis</h2>
+                <ul class="cursos__lista">
+                    {% for curso in cursos %}
+                    <li class="curso">
+                        <div class="curso__info">
+                            <h3 class="curso__titulo">{{ curso.nome }}</h3>
+                            <p class="curso__descricao">{{ curso.descricao|safe }}</p>
+                            <a href="{% url 'curso_detalhes' curso.id %}" class="curso__link">Ver Detalhes</a>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </section>
+            -->
+            <section class="galeria">
+                <div class="cards">
+                    <h2 class="cards__titulo">Navegue pelas matérias</h2>
+                    <ul class="cards__lista">
+                        {% for foto_id, info in cards.items %}
+                        <li class="card">
+                            <a href="{% url 'imagem' %}">
+                                <img class="card__imagem" src="{% static 'assets/imagens/galeria/carina-nebula.png' %}" alt="foto">
+                            </a>
+                            <div class="card__info">
+                                <p class="card__titulo">{{ info.nome }}</p>
+                                <div class="card__texto">
+                                    <p class="card__descricao">{{ info.legenda }}</p>
+                                    <span>
+                                        <img src="{% static 'assets/ícones/1x/favorite_outline.png' %}" alt="ícone de coração">
+                                    </span>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </section>
+        </section>
+    </main>
+</div>
+{% endblock %}

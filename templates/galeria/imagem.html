@@ -1,0 +1,69 @@
+{% extends 'galeria/base.html' %}
+{% load static %}
+{% block content %}
+<div class="pagina-inicial">
+    <header class="cabecalho">
+        <h1 class="titulo">GiovaniLearning</h1>
+        <div class="cabecalho__busca">
+            <div class="busca__fundo">
+                <input class="busca__input" type="text" placeholder="O que você procura?">
+                <img class="busca__icone" src="{% static 'assets/ícones/1x/search.png' %}" alt="ícone de search">
+            </div>
+        </div>
+    </header>
+    
+    <main class="principal">
+        <section class="menu-lateral">
+            <nav class="menu-lateral__navegacao">
+                <a href="{% url 'index' %}"><img src="{% static 'assets/ícones/1x/casa-icone.png' %}" width="24" height="24"> Home</a>
+                <a href="#"><img src="{% static 'assets/ícones/1x/coracao-icone.png' %}" width="24" height="24"> Matérias favoritas</a>
+                <a href="#"><img src="{% static 'assets/ícones/1x/forum-icone.png' %}" width="24" height="24"> Forum</a>
+                <a href="#"><img src="{% static 'assets/ícones/1x/chapeu-icone.png' %}" width="24" height="24"> Sobre Nós</a> 
+            </nav>
+        </section>
+        <section class="conteudo">
+            <!-- Seção para exibir a imagem e descrição -->
+            <section class="imagem">
+                <div class="imagem__conteudo">
+                    <img class="imagem__imagem" src="{% static 'assets/imagens/galeria/carina-nebula.png' %}">
+                    <div class="imagem__info">
+                        <div class="imagem__texto">
+                            <p class="imagem__titulo">“DevOps: Unificando Desenvolvimento e Operações”</p>
+                            <p class="imagem__descricao">12 de junho de 2024</p>
+                            <p class="imagem__texto">DevOps é uma abordagem moderna que unifica o desenvolvimento de software (Dev) e as operações de TI (Ops), criando um ciclo contínuo de integração e entrega. Esta prática visa aumentar a eficiência, reduzir o tempo de lançamento no mercado e melhorar a qualidade do software, promovendo uma cultura de colaboração e automação entre equipes. Ferramentas como CI/CD, monitoramento e gerenciamento de configuração desempenham um papel crucial na implementação bem-sucedida do DevOps, revelando áreas anteriormente difíceis de otimizar no processo de desenvolvimento.</p>                                
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+<section class="criar-sala">
+    <div class="criar-sala__container">
+        <br>
+        <h2 class="criar-sala__titulo">Fórum</h2>
+        <ul class="criar-sala__lista">
+            {% if topicos %}
+                {% for topico in topicos %}
+                    <li class="criar-sala__topico-item">
+                        <form action="{% url 'room' topico.room.room_name user.username %}" method="get">
+                            <button type="submit" class="criar-sala__topico-button">{{ topico.titulo }}</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <li class="criar-sala__topico-item">Não há tópicos criados</li>
+            {% endif %}
+        </ul>
+        <form method="post" action="{% url 'create-topico' %}" class="criar-topico__form">
+            {% csrf_token %}
+            <input type="text" name="titulo" class="criar-sala__input" placeholder="Insira o título do tópico">
+            <button type="submit" class="criar-sala__button">Criar Tópico</button>
+        </form>
+    </div>
+</section>
+
+                </div>
+            </section>
+        </section>
+    </main>
+</div>
+{% endblock %}

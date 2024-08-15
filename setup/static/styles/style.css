@@ -1,0 +1,643 @@
+/* Reset de CSS */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* Reset de papéis de exibição HTML5 para navegadores mais antigos */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+    font-family: 'Space Grotesk', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(#EEEEEE, #EEEEEE);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Estilos gerais */
+.pagina-inicial {
+    max-width: 1440px;
+    padding: 1.5rem;
+    margin: 0 auto;
+    flex: 1;
+}
+
+.principal {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.titulo {
+    font-family: 'Arial', sans-serif;
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin: 20px 0;
+    letter-spacing: 1.5px;
+}
+
+/* Estilos para a seção de banner */
+.banner {
+    width: auto;
+    position: relative;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.banner__imagem {
+    width: 100%;
+    border-radius: 50px;
+}
+
+.banner__titulo-container {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.banner__titulo {
+    color: #000000;
+    font-size: 40px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    display: inline-block;
+    padding: 10px 20px;
+}
+
+/* Estilos para o cabeçalho */
+.cabecalho {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 1.5rem 0 4rem 0;
+}
+
+.cabecalho__busca {
+    align-items: center;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #EEEEEE, #FEFFFE);
+    display: flex;
+    padding: 2px;
+}
+
+.busca__fundo {
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 8px;
+    display: flex;
+    width: 100%;
+}
+
+.busca__input {
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    height: 24px;
+    padding: 10px;
+    width: 500px;
+    color: #000000;
+    font-weight: bold;
+}
+
+.busca__icone {
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+}
+
+/* Estilos para os cartões */
+.cards {
+    width: 100%;
+}
+
+.cards__titulo {
+    color: #060706;
+    font-size: 2rem;
+    line-height: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.cards__lista {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0px 10px 10px #00000050;
+    color: #000000;
+    margin-bottom: 1rem;
+    width: calc(47% - 0.5rem);
+}
+
+.card__imagem {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+.card__info {
+    font-size: 1.2rem;
+    padding: 0 1.5rem 1rem 1.5rem;
+}
+
+.card__titulo {
+    font-weight: bold;
+    margin-top: 0.8em;
+}
+
+.card__texto {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.card__descricao {
+    font-size: 0.6em;
+    margin-top: 0.8em;
+}
+
+/* Estilos para o menu lateral */
+.menu-lateral {
+    padding-right: 1.5rem;
+    box-sizing: border-box;
+    min-width: 270px;
+}
+
+.menu-lateral__navegacao {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-lateral__navegacao a {
+    font-family: 'Space Grotesk', sans-serif;
+    align-items: center;
+    display: flex;
+    margin-bottom: 1.5rem;
+    text-decoration: none;
+    color: #686d76;
+    font-size: 24px;
+}
+
+.menu-lateral__navegacao a:first-child {
+    font-weight: bold;
+}
+
+.menu-lateral__navegacao img {
+    margin-right: 1.5rem;
+}
+
+/* Estilos para o rodapé */
+.rodape {
+    background-color: #686d76;
+    width: 100%;
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    color: #EEEEEE;
+    margin-top: auto;
+    box-sizing: border-box;
+}
+
+.rodape__icones {
+    width: 80px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.rodape__texto {
+    font-size: 1.1rem;
+}
+
+/* Estilos para as tags */
+.tags {
+    padding: 1.5rem 0;
+    display: flex;
+    align-items: center;
+    color: #686d76;
+    font-size: 1.3rem;
+}
+
+.tags__titulo {
+    margin-right: 4rem;
+}
+
+.tags__lista {
+    display: flex;
+}
+
+.tags__tag {
+    background-color: #686d76;
+    color: #EEEEEE;
+    margin-right: 1.5rem;
+    border-radius: 8px;
+    padding: .8rem .5rem;
+    width: 100px;
+    text-align: center;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.tags__tag:hover {
+    border: 2px solid #EEEEEE;
+}
+
+/* Estilos para as páginas de login e registro */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 900px;
+    margin: 20px;
+}
+
+.left-side {
+    background-color: #f4f4f4;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.left-side img {
+    max-width: 100%;
+    height: auto;
+}
+
+.left-side h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #686d76;
+}
+
+.left-side p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: grey;
+    text-align: center;
+}
+
+.right-side {
+    padding: 40px;
+    width: 50%;
+}
+
+.right-side h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #686d76;
+}
+
+.right-side form {
+    display: flex;
+    flex-direction: column;
+}
+
+.right-side input[type="text"],
+.right-side input[type="email"],
+.right-side input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.right-side button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #686d76;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.right-side button:hover {
+    background-color: #373a40;
+}
+
+.right-side .social-login {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.right-side .social-login button:hover {
+    opacity: 0.9;
+}
+
+.helptext, .errorlist {
+    display: none;
+}
+
+.p {
+    color: grey;
+}
+
+/* Estilos para a página de imagem */
+.imagem__conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imagem__imagem {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.imagem__info {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.imagem__titulo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #686d76;
+}
+
+.imagem__descricao {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.imagem__texto {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Estilos para os botões de autenticação */
+.botao-login,
+.botao-registro,
+.botao-logout {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #686d76;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.botao-login:hover,
+.botao-registro:hover,
+.botao-logout:hover {
+    background-color: #373a40;
+    transform: scale(1.05);
+}
+
+.mensagem-autenticacao {
+    color: rgb(255, 0, 0);
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.mensagem-bemvindo {
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.criar-sala {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.criar-sala__container {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.criar-sala__titulo {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.criar-sala__form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.criar-sala__input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.criar-sala__button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #686d76;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.criar-sala__button:hover {
+    background-color: #686d76;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 500px; /* Defina a largura fixa desejada */
+    margin: 20px auto; /* Centraliza horizontalmente */
+}
+
+.chat-window {
+    width: 100%;
+    height: 400px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+.chat-form {
+    display: flex;
+    width: 100%;
+}
+
+.chat-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    font-size: 16px;
+}
+
+.chat-button {
+    padding: 10px;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    background-color: #686d76;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.chat-button:hover {
+    background-color: #686d76;
+}
+
+.receive, .send {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+    word-wrap: break-word;
+}
+
+.receive {
+    background-color: #e9e9e9;
+    text-align: left;
+}
+
+.send {
+    background-color: #686d76;
+    color: white;
+    text-align: right;
+    margin-left: auto;
+}
+
+@media (max-width: 600px) {
+    .chat-container {
+        width: 100%; /* Ajusta a largura para telas menores */
+        padding: 10px;
+    }
+    .chat-input, .chat-button {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+.criar-sala__topico-item {
+    margin: 10px 0;
+}
+
+.criar-sala__topico-link {
+    text-decoration: none;
+    color: #686d76;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.criar-sala__topico-link:hover {
+    color: #686d76;
+}
+
+.criar-sala__lista {
+    padding: 0;
+    margin-top: 20px;
+}
+
+.criar-sala__topico-button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #686d76;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.criar-sala__topico-button:hover {
+    background-color: #686d76;
+}

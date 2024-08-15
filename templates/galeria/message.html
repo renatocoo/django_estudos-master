@@ -1,0 +1,88 @@
+{% extends 'galeria/base.html' %}
+{% load static %}
+{% block content %}
+<div class="pagina-inicial">
+    <header class="cabecalho">
+        <h1 class="titulo">GiovaniLearning</h1>
+        <div class="cabecalho__busca">
+            <div class="busca__fundo">
+                <input class="busca__input" type="text" placeholder="O que você procura?">
+                <img class="busca__icone" src="{% static 'assets/ícones/1x/search.png' %}" alt="ícone de search">
+            </div>
+        </div>
+    </header>
+    <main class="principal">
+        <section class="menu-lateral">
+            <nav class="menu-lateral__navegacao">
+                <a href="{% url 'index' %}"><img src="{% static 'assets/ícones/1x/casa-icone.png' %}" width="24" height="24"> Home</a>
+                <a href="#"><img src="{% static 'assets/ícones/1x/coracao-icone.png' %}" width="24" height="24"> Matérias favoritas</a>
+                <a href="#"><img src="{% static 'assets/ícones/1x/forum-icone.png' %}" width="24" height="24"> Forum</a>
+                <a href="#"><img src="{% static 'assets/ícones/1x/chapeu-icone.png' %}" width="24" height="24"> Sobre Nós</a>
+            </nav>
+        </section>
+        <section class="conteudo">
+            <div class="chat-container">
+                <div class="chat-window">
+                    <div class="message" id="chatContainer">
+                        <!-- Display Messages -->
+                        {% for msg in messages %}
+                        {% if msg.sender != user.username %}
+                        <div class="receive">
+                            <p><strong>{{ msg.sender }} -</strong> {{ msg.message }}</p>
+                        </div>
+                    {% else %}
+                        <div class="send">
+                            <p>{{ msg.message }}</p>
+                        </div>
+                    {% endif %}
+                    
+                        {% endfor %}
+                    </div>
+                </div>
+                <form id="message-form" class="chat-form">
+                    {% csrf_token %}
+                    <input type="text" id="msg" autocomplete="off" class="chat-input" placeholder="Digite sua mensagem">
+                    <button type="submit" class="chat-button">Enviar</button>
+                </form>
+            </div>
+        </section>
+    </main>
+</div>
+<script>
+    const websocketProtocol = window.location.protocol === "https:" ? "wss" : "ws";
+    const wsEndpoint = `${websocketProtocol}://${window.location.host}/ws/notification/{{ room_name }}/`;
+    const socket = new WebSocket(wsEndpoint);
+
+    socket.onopen = function(event) {
+        console.log("WebSocket connection opened!");
+    };
+
+    socket.onclose = function(event) {
+        console.log("WebSocket connection closed!");
+    };
+
+    document.getElementById('message-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const message = document.getElementById('msg').value;
+        socket.send(JSON.stringify({
+            'message': message,
+            'room_name': '{{ room_name }}',
+            'sender': '{{ user.username }}',  // Enviando o nome do usuário autenticado
+        }));
+        document.getElementById('msg').value = '';
+    });
+
+    socket.onmessage = function(event) {
+        const data = JSON.parse(event.data).message;
+        var sender = data.sender;
+        var message = data.message;
+        var chatContainer = document.getElementById("chatContainer");
+        if (sender != '{{ user.username }}') {
+            chatContainer.innerHTML += `<div class="receive"><p><strong>${sender} -</strong> ${message}</p></div>`;
+        } else {
+            chatContainer.innerHTML += `<div class="send"><p>${message}</p></div>`;
+        }
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    };
+</script>
+{% endblock %}
